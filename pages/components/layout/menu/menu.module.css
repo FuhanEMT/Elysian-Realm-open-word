@@ -1,0 +1,17 @@
+
+.left{
+    width: 15vw;
+    height: 100%;
+    background-color: #fff;
+}
+.button{
+    width: 80%;
+    padding: 10px 20px;
+    border:1px dashed #0ba744;
+    margin: 0 auto;
+    border-radius: 8px;
+    color: rgb(39, 121, 73);
+    text-align: center;
+    cursor: pointer;
+}
+

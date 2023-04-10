@@ -3,7 +3,7 @@ import { BaseAPI } from "openai/base";
 
 const configuration = new Configuration({
     // organization: "org-1X2BuxEsDB6HDg2jU0jeQ3P1",
-    apiKey: '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',
+    apiKey: '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',
 });
 
 const OpenAiPropoyData: any | BaseAPI = new OpenAIApi(configuration);
@@ -21,7 +21,19 @@ function getCreateDialogue(model:string = "text-davinci-003" , msg:string = '你
     return resoleve
 }
 
+// 获取可使用模型列表
+function getModelOpenAiList(){
+    let resoleve = new Promise((resolve , reject) => {
+        OpenAiPropoyData.listModels().then((res:OpenAIApi) => {
+            resolve(res)
+        })
+    })
+
+    return resoleve
+}
+
 let openGatherList = {
-    getCreateDialogue: getCreateDialogue
+    getCreateDialogue: getCreateDialogue,
+    getModelOpenAiList: getModelOpenAiList
 }
 export default openGatherList

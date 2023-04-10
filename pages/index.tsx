@@ -1,36 +1,28 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Configuration , OpenAIApi } from "openai";
+
+import { Button } from 'primereact/button';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import  Header from '../pages/components/layout/header/header'
+import Menu from "../pages/components/layout/menu/menu";
+import openGatherList from  '../pages/service/openAI'
 
 const inter = Inter({ subsets: ['latin'] })
 
-// Init OpenAi key or anization
-const configuration = new Configuration({
-    organization: "org-1X2BuxEsDB6HDg2jU0jeQ3P1",
-    apiKey: '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',
-});
-const openai = new OpenAIApi(configuration);
-const response =  openai.listEngines();
-
-console.log(openai , response)
-
-const axiosThen = openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: "你能帮我写一个js的正则代码吗，严重是否为手机号",
-    temperature: 0,
-    max_tokens: 64,
-    top_p: 1.0,
-    frequency_penalty: 0.0,
-    presence_penalty: 0.0,
+// 发送一条新的对话
+openGatherList.getCreateDialogue('text-davinci-003','你好，你是谁').then(res => {
+    console.log(res)
 })
-    .then((res) => {
-        console.log(res)
-    })
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>Open AI - Javascript</div>
-    </main>
+      <div className="layout-admin">
+          <Header />
+          <div className="centent">
+              <Menu />
+          </div>
+      </div>
   )
 }
